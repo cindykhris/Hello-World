@@ -2,8 +2,8 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-n = int(input("Pick a number "))
-n1 = int(input("How many random numbers "))
+n = int(input("Pick any number "))
+n1 = int(input("Pick the total number you want "))
 
 
 rnumber =[random.randint(1,(n)) for x in range(n1)]
@@ -95,46 +95,6 @@ with open ("rnumber.txt", "a") as medianpf:
 import collections
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## calculate the standard deviation
 def st_dev(number):
 	mean_a = sum(number)/len(number)
@@ -144,7 +104,7 @@ def st_dev(number):
 	g = sum(f)
 	h = g/(len(number)-1)
 	k = (h)**.5
-	return (("The standard deviation is: ")  + str(k))
+	return (k)
 
 st_dev_n = [st_dev(n)]
 print(st_dev_n)
@@ -154,19 +114,33 @@ with open ("rnumber.txt", "a") as sdf:
 		sdf.write("standard deviation Number: ")
 		sdf.write('%s, ' % i)
 
+#verify the standard deviation with numpy 
+print("The standard deviation of the number with numpy")
+st_dev_n_np = [np.std(n)]
+print(st_dev_n_np)
+
+with open ("rnumber.txt", "a") as stdnpf:
+	for i in st_dev_n_np:
+		stdnpf.write("standard deviation using numpy: ")
+		stdnpf.write('%s, ' % i)
+
+
+
+
 # calcualte the max, min, and range 
 def range_n(number):
 	max_n = max(number)
 	print(("The max number is: ") + str(max_n))
 	min_n = min(number)
 	print("The min number is : " + str(min_n))
-	return (max_n - min_n)
+	return [(max_n,min_n,max_n - min_n)]
 
 range_n = [range_n(n)]
-print("The range of numbers is: ")
+print("The max, min and range of numbers are: ")
 print(range_n)
 
 with open ("rnumber.txt", "a") as rangef:
 	for i in range_n:
-		rangef.write("Range Number: ")
+		rangef.write("The max, min and range of numbers are: ")
 		rangef.write('%s, ' % i)
+
